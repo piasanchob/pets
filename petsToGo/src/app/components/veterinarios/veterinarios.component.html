@@ -1,0 +1,208 @@
+<c-header class="header_color">
+  <c-container fluid>
+      <div class="side-menu" [@openCloseSideMenu]="sideMenuOpen ? 'open' : 'closed'" (mouseleave)="closeSideMenu()"> <!--Esto es para el menu-->>
+          <h1 class=".tittle_white" style="color: #FEFCFD;">Menú</h1>
+          <hr/>
+          <ul class="side-menu-nav">
+            <li class="nav-item">
+              <a cNavLink routerLink="/adoptar" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Adoptar <img src="assets/images/icons/btnAdoptar.svg" width="50px" height="50px"></button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a cNavLink routerLink="/veterinarios" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Veterinarias <img src="assets/images/icons/btnVeterinaria.svg" width="50px" height="50px"></button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a cNavLink routerLink="/tiendas" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Tiendas <img src="assets/images/icons/btnTienda.svg" width="50px" height="50px"></button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a cNavLink routerLink="/anuncios" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Anunciar <img src="assets/images/icons/btnAnunciar.svg" width="50px" height="50px"></button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a cNavLink routerLink="/mis_mascotas" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Mis mascotas <img src="assets/images/icons/btnMisMascotas.svg" width="50px" height="50px"></button>
+              </a>
+            </li>  
+            <li class="nav-item">
+              <a cNavLink routerLink="/chats" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Grupos <img src="assets/images/icons/btnGrupos.svg" width="50px" height="50px"></button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a cNavLink routerLink="/first" class="side-menu-link">
+                  <button cButton color="light" variant="outline">Salir <img src="assets/images/icons/btnSalir.svg" width="50px" height="50px"></button>
+              </a>
+            </li>        
+          </ul>
+        </div>
+        
+        
+        <div class="toolbar" role="banner">
+          <a (click)="openSideMenu()">
+            <svg class="btn-sandwitch" width="30" height="23" viewBox="0 0 59 45" xmlns="http://www.w3.org/2000/svg">
+              <rect width="59" height="11" />
+              <rect y="34" width="59" height="11" />
+              <rect y="16" width="59" height="13" />
+            </svg>
+          </a>
+          <div></div>
+        </div>
+        <a cNavLink routerLink="/home">
+          <c-header-brand [routerLink]>
+            <img src="assets/images/logo/PetsToGoOscuro.png" width="80px" height="80px">
+        </c-header-brand>
+          <c-header-brand class="tittle_white">PetsToGo</c-header-brand>
+        </a>
+    <c-header-nav class="ms-auto">
+      <c-nav-item class="button_attributs" cNavLink routerLink="/profile">
+          <button cButton color="light" variant="outline" >Mi perfil <img src="assets/images/icons/Usuario.svg" width="50px" height="50px"></button>
+      </c-nav-item>
+    </c-header-nav>
+  </c-container>
+</c-header>
+
+<div>
+    <c-row class="empty_space center_attributs">
+        <c-col [sm]="6">
+            <h1 class="tittle_white" style="color: #5D5D81;">Conozca nuestros servicios veterinarios.</h1>
+        </c-col>
+        <c-col [sm]="3">
+            <a cNavLink routerLink="/filtro">
+                <button cButton color="link" variant="outline"><img src="assets\images\icons\iconoVet.svg" width="150px" height="150px"></button>
+                <p>Veterinarios disponibles</p>
+            </a>
+        </c-col>
+    </c-row>
+</div>
+
+<div>
+    <c-row class="empty_space">
+        <c-col [sm]="3">
+            <div class="cuadrito">
+                <h2 style="color: black"> Filtros</h2>
+                <h3> Especialidad</h3>
+                <c-form-check>
+                    <input cFormCheckInput id="checkGeneral" type="checkbox" />
+                    <label cFormCheckLabel for="checkGeneral" class="text_white">General</label>
+                </c-form-check>
+                <c-form-check>
+                    <input cFormCheckInput id="checkCirugía" type="checkbox" />
+                    <label cFormCheckLabel for="checkCirugía" class="text_white">Cirugía</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkRehabilitación" type="checkbox" />
+                    <label cFormCheckLabel for="checkRehabilitación" class="text_white">Rehabilitación</label>
+                  </c-form-check>
+                <c-form-check>
+                    <input cFormCheckInput id="checkImagenología" type="checkbox" />
+                    <label cFormCheckLabel for="checkImagenología" class="text_white">Imagenología</label>
+                </c-form-check>
+                <c-form-check>
+                    <input cFormCheckInput id="checkFisioterapia" type="checkbox" />
+                    <label cFormCheckLabel for="checkFisioterapia" class="text_white">Fisioterapia</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkEmergencias" type="checkbox" />
+                    <label cFormCheckLabel for="checkEmergencias" class="text_white">Emergencias</label>
+                  </c-form-check>
+                  <h3> Provincia</h3>
+                <c-form-check>
+                    <input cFormCheckInput id="checkCartago" type="checkbox" />
+                    <label cFormCheckLabel for="checkCartago" class="text_white">Cartago</label>
+                </c-form-check>
+                <c-form-check>
+                    <input cFormCheckInput id="checkSJ" type="checkbox" />
+                    <label cFormCheckLabel for="checkSJ" class="text_white">San José</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkHeredia" type="checkbox" />
+                    <label cFormCheckLabel for="checkHeredia" class="text_white">Heredia</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkAlajuela" type="checkbox" />
+                    <label cFormCheckLabel for="checkAlajuela" class="text_white">Alajuela</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkPuntarenas" type="checkbox" />
+                    <label cFormCheckLabel for="checkPuntarenas" class="text_white">Puntarenas</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkLimon" type="checkbox" />
+                    <label cFormCheckLabel for="checkLimon" class="text_white">Limón</label>
+                  </c-form-check>
+                  <c-form-check>
+                    <input cFormCheckInput id="checkGuanacaste" type="checkbox" />
+                    <label cFormCheckLabel for="checkGuanacaste" class="text_white">Guanacaste</label>
+                  </c-form-check>
+            </div>
+        </c-col>
+        <c-col>
+            <c-row class="empty_space">
+                <c-col sm="4">
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet1.svg" width="150px" height="150px"></button>
+                        <p>Veterinaria Happy Paws</p>
+                    </a>
+                </c-col>
+                <c-col sx>
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet2.svg" width="150px" height="150px"></button>
+                        <p>Vet. Roberto López</p>
+                    </a>
+                </c-col>
+                <c-col sx>
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet3.svg" width="150px" height="150px"></button>
+                        <p>Cassandra Céspedes Especialista</p>
+                    </a>
+                </c-col>
+            </c-row>
+            <c-row class="empty_space">
+                <c-col sx>
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet4.svg" width="150px" height="150px"></button>
+                        <p>Clínica Vet. Especialista en Rehabilitación</p>
+                    </a>
+                </c-col>
+                <c-col sx>
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet5.svg" width="150px" height="150px"></button>
+                        <p>Veterinaria Pet House</p>
+                    </a>
+                </c-col>
+                <c-col sx>
+                    <a cNavLink routerLink="/vet_info">
+                        <button cButton color="link" variant="outline"><img src="assets/images/vets/Vet6.svg" width="150px" height="150px"></button>
+                        <p>Marco Quesada Veterinario</p>
+                    </a>
+                </c-col>
+            </c-row>
+        </c-col>
+    </c-row>
+</div>
+
+<div class="center_down">
+    <c-pagination aria-label="Page navigation example">
+        <li cPageItem>
+          <a cPageLink [routerLink]>Anterior</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>1</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>2</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>3</a>
+        </li>
+        <li cPageItem>
+          <a cPageLink [routerLink]>Siguiente</a>
+        </li>
+      </c-pagination>
+</div>
