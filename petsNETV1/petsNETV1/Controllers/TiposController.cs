@@ -130,7 +130,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Tipos/GetAllTipos")]
+        [Route("api/tipos/GetAllTipos")]
         [HttpGet]
         public HttpResponseMessage GetAllTipos()
         {

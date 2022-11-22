@@ -130,7 +130,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Provincias/GetAllProvincias")]
+        [Route("api/provincias/GetAllProvincias")]
         [HttpGet]
         public HttpResponseMessage GetAllProvincias()
         {

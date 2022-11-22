@@ -140,7 +140,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Usuarios/GetAllUsuarios")]
+        [Route("api/usuarios/GetAllUsuarios")]
         [HttpGet]
         public HttpResponseMessage GetAllUsuarios()
         {

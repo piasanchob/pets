@@ -146,7 +146,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Mascotas/GetAllMascotas")]
+        [Route("api/mascotas/GetAllMascotas")]
         [HttpGet]
         public HttpResponseMessage GetAllMascotas()
         {

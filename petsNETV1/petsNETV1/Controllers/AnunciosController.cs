@@ -148,7 +148,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Anuncios/GetAllAnuncios")]
+        [Route("api/anuncios/GetAllAnuncios")]
         [HttpGet]
         public HttpResponseMessage GetAllAnuncios()
         {

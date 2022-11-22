@@ -150,7 +150,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Veterinarios/GetAllVeterinarios")]
+        [Route("api/veterinarios/GetAllVeterinarios")]
         [HttpGet]
         public HttpResponseMessage GetAllVeterinarios()
         {

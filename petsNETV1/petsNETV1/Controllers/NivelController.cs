@@ -131,7 +131,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Nivel/GetAllNivel")]
+        [Route("api/nivel/GetAllNivel")]
         [HttpGet]
         public HttpResponseMessage GetAllNivel()
         {

@@ -140,7 +140,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Tiendas/GetAllTiendas")]
+        [Route("api/tiendas/GetAllTiendas")]
         [HttpGet]
         public HttpResponseMessage GetAllTiendas()
         {

@@ -149,7 +149,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/HistorialMascota/GetAllHistorial")]
+        [Route("api/historialmascota/GetAllHistorial")]
         [HttpGet]
         public HttpResponseMessage GetAllHistorial()
         {

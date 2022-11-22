@@ -131,7 +131,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Etapas/GetAllEtapas")]
+        [Route("api/etapas/GetAllEtapas")]
         [HttpGet]
         public HttpResponseMessage GetAllEtapas()
         {

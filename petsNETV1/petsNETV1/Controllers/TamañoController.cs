@@ -131,7 +131,7 @@ namespace petsNETV1.Controllers
             }
         }
 
-        [Route("api/Tamaño/GetAllTamaño")]
+        [Route("api/tamaño/GetAllTamaño")]
         [HttpGet]
         public HttpResponseMessage GetAllTamaño()
         {
