@@ -78,15 +78,15 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + usuario.nombre + @"' 
-                cedula  =
+                ,cedula  =
                 '" + usuario.cedula + @"'
-                correo  =
+                ,correo  =
                 '" + usuario.correo + @"'
-                fechanac  =
+                ,fechanac  =
                 '" + usuario.fechanac + @"'
-                usuario  =
+                ,usuario  =
                 '" + usuario.usuario + @"'
-                contraseña  =
+                ,contraseña  =
                 '" + usuario.contraseña + @"'
                
 
@@ -138,6 +138,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Usuarios/GetAllUsuarios")]
+        [HttpGet]
+        public HttpResponseMessage GetAllUsuarios()
+        {
+
+            string query = @"SELECT nombre FROM Usuarios ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

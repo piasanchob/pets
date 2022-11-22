@@ -76,7 +76,7 @@ namespace petsNETV1.Controllers
                 
                 id  =
                 '" + nivel.id + @"' 
-                nombre  =
+                ,nombre  =
                 '" + nivel.nombre + @"'
                
                
@@ -129,6 +129,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Nivel/GetAllNivel")]
+        [HttpGet]
+        public HttpResponseMessage GetAllNivel()
+        {
+
+            string query = @"SELECT nombre FROM Nivel";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

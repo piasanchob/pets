@@ -75,7 +75,7 @@ namespace petsNETV1.Controllers
                 
                 id  =
                 '" + tipo.id + @"' 
-                nombre  =
+                ,nombre  =
                 '" + tipo.nombre + @"'
                
                
@@ -128,6 +128,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Tipos/GetAllTipos")]
+        [HttpGet]
+        public HttpResponseMessage GetAllTipos()
+        {
+
+            string query = @"SELECT nombre FROM Tipos ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

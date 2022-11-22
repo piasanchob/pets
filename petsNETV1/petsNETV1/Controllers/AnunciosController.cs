@@ -79,23 +79,23 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + anuncio.nombre + @"' 
-                tamaño_id  =
+                ,tamaño_id  =
                 '" + anuncio.tamaño_id + @"'
-                tipo_id  =
+                ,tipo_id  =
                 '" + anuncio.tipo_id + @"'
-                provincia_id  =
+                ,provincia_id  =
                 '" + anuncio.provincia_id + @"'
-                nivel_id  =
+                ,nivel_id  =
                 '" + anuncio.nivel_id + @"'
-                etapa_id  =
+                ,etapa_id  =
                 '" + anuncio.etapa_id + @"'
-                usuario_id  =
+                ,usuario_id  =
                 '" + anuncio.usuario_id + @"'
-                descripcion  =
+                ,descripcion  =
                 '" + anuncio.descripcion + @"'
-                correo  =
+                ,correo  =
                 '" + anuncio.correo + @"'
-                tel  =
+                ,tel  =
                 '" + anuncio.tel + @"'
 
                 WHERE id = '" + anuncio.id + @"'
@@ -146,6 +146,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Anuncios/GetAllAnuncios")]
+        [HttpGet]
+        public HttpResponseMessage GetAllAnuncios()
+        {
+
+            string query = @"SELECT nombre FROM Anuncios ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK,table);
         }
     }
 }

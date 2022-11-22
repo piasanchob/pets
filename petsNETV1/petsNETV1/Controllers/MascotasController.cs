@@ -80,19 +80,19 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + mascota.nombre + @"' 
-                tamaño  =
+                ,tamaño  =
                 '" + mascota.tamaño + @"'
-                tipo_id  =
+                ,tipo_id  =
                 '" + mascota.tipo_id + @"'
-                edad  =
+                ,edad  =
                 '" + mascota.edad + @"'
-                descripción  =
+                ,descripción  =
                 '" + mascota.descripción + @"'
-                raza  =
+                ,raza  =
                 '" + mascota.raza + @"'
-                peso  =
+                ,peso  =
                 '" + mascota.peso + @"'
-                usuario_id  =
+                ,usuario_id  =
                 '" + mascota.usuario_id + @"'
              
 
@@ -144,6 +144,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Mascotas/GetAllMascotas")]
+        [HttpGet]
+        public HttpResponseMessage GetAllMascotas()
+        {
+
+            string query = @"SELECT nombre FROM Mascotas ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

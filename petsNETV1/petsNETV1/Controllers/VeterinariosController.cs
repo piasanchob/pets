@@ -82,19 +82,19 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + vet.nombre + @"' 
-                descripcion  =
+                ,descripcion  =
                 '" + vet.descripcion + @"'
-                ubiexacta  =
+                ,ubiexacta  =
                 '" + vet.ubiexacta + @"'
-                numero  =
+                ,numero  =
                 '" + vet.numero + @"'
-                ubicacion  =
+                ,ubicacion  =
                 '" + vet.ubicacion + @"'
-                nota  =
+                ,nota  =
                 '" + vet.nota + @"'
-                horario  =
+                ,horario  =
                 '" + vet.horario + @"'
-                especialidad  =
+                ,especialidad  =
                 '" + vet.especialidad + @"'
              
 
@@ -148,6 +148,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Veterinarios/GetAllVeterinarios")]
+        [HttpGet]
+        public HttpResponseMessage GetAllVeterinarios()
+        {
+
+            string query = @"SELECT nombre FROM Veterinarios ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace petsNETV1.Controllers
                 
                 id  =
                 '" + etapa.id + @"' 
-                nombre  =
+                ,nombre  =
                 '" + etapa.nombre + @"'
                
                
@@ -129,6 +129,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Etapas/GetAllEtapas")]
+        [HttpGet]
+        public HttpResponseMessage GetAllEtapas()
+        {
+
+            string query = @"SELECT nombre FROM Etapas ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

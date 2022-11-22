@@ -81,19 +81,19 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + historial.nombre + @"' 
-                peso  =
+                ,peso  =
                 '" + historial.peso + @"'
-                raza  =
+                ,raza  =
                 '" + historial.raza + @"'
-                edad  =
+                ,edad  =
                 '" + historial.edad + @"'
-                vacunas  =
+                ,vacunas  =
                 '" + historial.vacunas + @"'
-                observaciones  =
+                ,observaciones  =
                 '" + historial.observaciones + @"'
-                proxima_cita  =
+                ,proxima_cita  =
                 '" + historial.proxima_cita + @"'
-                usuario_id  =
+                ,usuario_id  =
                 '" + historial.usuario_id + @"'
              
 
@@ -148,5 +148,26 @@ namespace petsNETV1.Controllers
                 return "Error";
             }
         }
+
+        [Route("api/HistorialMascota/GetAllHistorial")]
+        [HttpGet]
+        public HttpResponseMessage GetAllHistorial()
+        {
+
+            string query = @"SELECT nombre FROM Historial ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
+        }
+
     }
 }

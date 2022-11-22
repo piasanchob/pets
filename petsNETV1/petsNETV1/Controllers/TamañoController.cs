@@ -76,7 +76,7 @@ namespace petsNETV1.Controllers
                 
                 id  =
                 '" + tamaño.id + @"' 
-                nombre  =
+                ,nombre  =
                 '" + tamaño.nombre + @"'
                
                
@@ -129,6 +129,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Tamaño/GetAllTamaño")]
+        [HttpGet]
+        public HttpResponseMessage GetAllTamaño()
+        {
+
+            string query = @"SELECT nombre FROM Tamaño ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }

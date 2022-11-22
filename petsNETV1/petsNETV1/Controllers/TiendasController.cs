@@ -77,13 +77,13 @@ namespace petsNETV1.Controllers
                 
                 nombre  =
                 '" + tienda.nombre + @"' 
-                producto  =
+                ,producto  =
                 '" + tienda.producto + @"'
-                ubicacion  =
+                ,ubicacion  =
                 '" + tienda.ubicacion + @"'
-                horario  =
+                ,horario  =
                 '" + tienda.horario + @"'
-                tel  =
+                ,tel  =
                 '" + tienda.tel + @"'
              
              
@@ -138,6 +138,26 @@ namespace petsNETV1.Controllers
             {
                 return "Error";
             }
+        }
+
+        [Route("api/Tiendas/GetAllTiendas")]
+        [HttpGet]
+        public HttpResponseMessage GetAllTiendas()
+        {
+
+            string query = @"SELECT nombre FROM Tiendas ";
+
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(ConfigurationManager.
+                ConnectionStrings["PetsToGoAppDB"].ConnectionString))
+            using (var cmd = new SqlCommand(query, con))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.Text;
+                da.Fill(table);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, table);
         }
     }
 }
